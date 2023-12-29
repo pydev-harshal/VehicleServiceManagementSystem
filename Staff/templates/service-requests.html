@@ -1,0 +1,136 @@
+
+{% extends "staff_base.html" %}
+
+
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Service Request</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>Service No</th>
+                    <th>Reg Number</th>
+                    <th>Vehicle Name</th>
+                    <th>Status</th>
+                    <th>Details/Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for obj in services %}
+                  <tr>
+                    <td>{{obj.service_number}}</td>
+                    <td>{{obj.vehicle_reg_no}}</td>
+                    <td>{{obj.vehicle_brand}} {{obj.vehicle_name}} {{obj.vehicle_model}}</td>
+                    <td>{{obj.admin_remark}}</td>
+                    <td>          
+                      <!-- <nav>
+                        <ul>
+                          <li>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModal{{obj.id}}">
+                              <i class="bi bi-eye-fill"></i>
+                            </button>
+                          </li>
+                          <li>
+                            <form method="post">{% csrf_token %}<input type="hidden" name="id" value="{{obj.id}}"><button type="submit" class="btn btn-success">Proceed</button></form>
+                          </li>
+                        </ul>
+                      </nav> -->
+                      <nav>
+                        <ol class="breadcrumb">
+                          <li class=""><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModal{{obj.id}}">
+                            <i class="bi bi-eye-fill"></i>
+                          </button></li>
+                          <span>&nbsp;&nbsp;</span>
+                          <li class=""><form method="post">{% csrf_token %}<input type="hidden" name="id" value="{{obj.id}}"><button type="submit" class="btn btn-success">Proceed</button></form></li>
+                          <!-- <li class="breadcrumb-item active">Profile</li> -->
+                        </ol>
+                      </nav>
+
+              <div class="modal fade" id="largeModal{{obj.id}}" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Service Request : {{obj.service_number}}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Category</div>
+                        <div class="col-lg-9 col-md-8">{{obj.category}}</div>
+                      </div>
+                      <hr>
+                      <h5><b>Contact Detail</b></h5>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Customer Name</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.full_name}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Email</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.user_id}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Contact Number</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.phone_number}}</div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Registration Number</div>
+                        <div class="col-lg-9 col-md-8">{{obj.vehicle_reg_no}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Vehicle</div>
+                        <div class="col-lg-9 col-md-8">{{obj.vehicle_brand}} {{obj.vehicle_name}} {{obj.vehicle_model}}</div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Service Date and Time</div>
+                        <div class="col-lg-9 col-md-8">{{obj.service_date}} / {{obj.service_time}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Pickup Address</div>
+                        <div class="col-lg-9 col-md-8">{{obj.pickup_address}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Delivery </div>
+                        <div class="col-lg-9 col-md-8">{{obj.need_delivery}}</div>
+                      </div>
+    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                      <form method="post">{% csrf_token %}<input type="hidden" name="id" value="{{obj.id}}"><button type="submit" class="btn btn-success">Proceed</button></form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock content %}

@@ -1,0 +1,576 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static "images/fevicon.png" %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Motora</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- font awesome style -->
+  <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static "css/style.css" %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static "css/responsive.css" %}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="">
+          <span>Motora</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav  ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about"> About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#service">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#why">Why Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact Us</a>
+            </li>
+          </ul>
+          <div class="quote_btn-container">
+            <a href="">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                Call : +01 123455678990
+              </span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- end header section -->
+  <!-- slider section -->
+  <section class="slider_section ">
+    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container ">
+            <div class="row">
+              <div class="col-md-6 col-lg-5">
+                <div class="detail-box">
+                  <h1>
+                    Vehicle Service <br>
+                    Management System (VSMS)
+                  </h1>
+                  <p>                
+                    "Efficiently Streamline Vehicle Maintenance with VSMS: Simplifying Service Tracking, Scheduling, and Management for Optimal Vehicle Performance and Reliability." </p>
+                  <div class="btn-box">
+                    <a href="{% url "user-index" %}" class="btn-1">
+                      Book Service
+                    </a>
+                    <a href="#contact" class="btn-2">
+                      Contact Us
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-7">
+                <div class="img-box">
+                  <img src="{% static "images/slider-img.png" %}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ol class="carousel-indicators">
+        <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+      </ol>
+    </div>
+  </section>
+  <!-- end slider section -->
+
+  <!-- service section -->
+
+  <section class="service_section " id="service">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Services
+        </h2>
+      </div>
+    </div>
+    <div class="container ">
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/s1.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                General Maintenance
+              </h4>
+              <p>
+                Drive with confidence, powered by our maintenance expertise!
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/s2.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                Repair and Replacement
+              </h4>
+              <p>
+                Revive, Restore, and Keep Rolling - Your Trusted Repair & Maintenance Partner!
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 ">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/s3.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                Tire Repair and Replacement
+              </h4>
+              <p>
+                Where Quality Meets the Road - Tire Replacement Done Right
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/s4.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                Wheel Alignment
+              </h4>
+              <p>
+                Straighten Your Path, Align Your Wheels for Precision Performance!
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/s5.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                Fuel System Repair
+              </h4>
+              <p>
+                Optimize Efficiency and Power - Fuel System Solutions for Your Ride!
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/s6.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                Tune Up
+              </h4>
+              <p>
+                Fine-Tuning Excellence - Revitalize Your Ride with Precision Tune-Ups!
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end service section -->
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding" id="about">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="{% static "images/about-img.png" %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About Us
+              </h2>
+            </div>
+            <p>
+              Motora is more than just a project name; it's a commitment to excellence in the realm of automotive service management. We at Motora are dedicated to revolutionizing the way vehicle services are managed and executed. Our platform is designed with a passion for innovation, aiming to simplify and optimize the entire process of vehicle maintenance. </p>
+            <a href="">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- why section -->
+
+  <section class="why_section" id="why">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Why Choose Us
+        </h2>
+      </div>
+    </div>
+    <div class="container ">
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/w1.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                Best Workers
+              </h4>
+              <p>
+                Where Expertise Meets Excellence - Our Team, Your Assurance.
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mx-auto ">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/w2.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                Best Materials
+              </h4>
+              <p>
+                Quality Materials, Crafted for Superior Performance.
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static "images/w3.png" %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h4>
+                Best Service
+              </h4>
+              <p>
+                Unparalleled Excellence in Service, Every Mile, Every Moment.
+              </p>
+              <a href="">
+                Read More
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end why section -->
+
+  <!-- client section -->
+  <section class="client_section layout_padding" id="client">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Testimonial
+        </h2>
+        <p>
+          Even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to
+        </p>
+      </div>
+    </div>
+    <div class="container px-0">
+      <div id="customCarousel2" class="carousel  slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-10 mx-auto">
+                  <div class="box">
+                    <div class="img-box">
+                      <img src="{% static "images/client.jpg" %}" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <div class="client_info">
+                        <div class="client_name">
+                          <h5>
+                            Morojink
+                          </h5>
+                          <h6>
+                            Customer
+                          </h6>
+                        </div>
+                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                      </div>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum
+                        dolore eu fugia
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel_btn-box">
+          <a class="carousel-control-prev" href="#customCarousel2" role="button" data-slide="prev">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#customCarousel2" role="button" data-slide="next">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end client section -->
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding-bottom" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <div class="heading_container ">
+              <h2>
+                Get In Touch
+              </h2>
+            </div>
+            <form method="Post" >
+              
+              {% if messages %}
+                  {% for message in messages %}
+
+                  {% if 'info' in message.tags %}
+                  
+                  <h5 style="text-align: center; color: green;"><i class="fa fa-check-square" aria-hidden="true"></i> {{ message }}</h5>
+                  {% else %}
+                  <h5 style="text-align: center; color: red;"><i class="fa fa-exclamation" aria-hidden="true"></i> {{ message }}</h5>
+                  {% endif %}
+
+                  {% endfor %}
+              {% endif %}
+
+              {% csrf_token %}
+              <div>
+                <input type="text" placeholder="Your Name" name="full_name" required/>
+              </div>
+              <div>
+                <input type="email" placeholder="Your Email" name="email" required />
+              </div>
+              <div>
+                <input type="text" placeholder="Your Phone" pattern="[0-9]{10}" name="phone_number" required />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Message" name="message"  />
+              </div>
+              <div class="btn_box ">
+                <button type="submit">
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static "images/contact-img.png" %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+  <!-- info section -->
+
+  <section class="info_section ">
+    <div class="info_container ">
+      <div class="container">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9">
+              <div class="info_contact d-flex justify-content-between">
+                <div class="col-md-4 text-center">
+                  <a href="#" class="link-box">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span>Location</span>
+                  </a>
+                </div>
+                <div class="col-md-4 text-center">
+                  <a href="#" class="link-box">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span>Call +01 1234567890</span>
+                  </a>
+                </div>
+                <div class="col-md-4 text-center">
+                  <a href="#" class="link-box">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span>demo@gmail.com</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="info_logo">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              Motora
+            </span>
+          </a>
+        </div>
+        <div class="social-box">
+          <a href="">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-youtube" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a>MOTORA</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script src="{% static "js/jquery-3.4.1.min.js" %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static "js/bootstrap.js" %}"></script>
+  <!-- custom js -->
+  <script src="{% static "js/custom.js" %}"></script>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+</body>
+
+</html>

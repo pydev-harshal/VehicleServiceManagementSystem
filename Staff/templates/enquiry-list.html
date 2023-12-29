@@ -1,0 +1,59 @@
+{% extends "staff_base.html" %}
+
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Active Enquirys</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Datatables</h5>
+              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Enquiry Date</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Contact Number</th>
+                    <th>Message</th>
+                    <th>Reached From</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for obj in enquires  %}
+                  <tr>
+                    <td>{{obj.id}}</td>
+                    <td>{{obj.created_on}}</td>
+                    <td>{{obj.full_name}}</td>
+                    <td>{{obj.email}}</td>
+                    <td>{{obj.contact_number}}</td>
+                    <td>{{obj.message}}</td>
+                    <td>{{obj.enquiry_from}}</td>
+                    <td><form  method="post">{% csrf_token %}<input type="hidden" name="id" value="{{obj.id}}"><button type="submit" class="btn btn-primary mb-2">{{obj.status}}</button></form></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock content %}

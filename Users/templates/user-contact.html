@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Contact Us</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section contact">
+
+      <div class="row gy-4">
+
+        <div class="col-xl-6">
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="info-box card">
+                <i class="bi bi-geo-alt"></i>
+                <h3>Address</h3>
+                <p>A108 Adam Street,<br>New York, NY 535022</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="info-box card">
+                <i class="bi bi-telephone"></i>
+                <h3>Call Us</h3>
+                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="info-box card">
+                <i class="bi bi-envelope"></i>
+                <h3>Email Us</h3>
+                <p>info@example.com<br>contact@example.com</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="info-box card">
+                <i class="bi bi-clock"></i>
+                <h3>Open Hours</h3>
+                <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-6">  
+          <div class="card p-4">
+            <h4 class="text-center"><i class="ri-24-hours-fill" aria-hidden="true"></i> Need Help ?</h4>
+            <form class="row g-3" method="post">
+                {% if messages %}
+                {% for message in messages  %}
+                {% if message.tags == 'error' %}
+                <div class="" style="color:red"><i class="fa fa-ban" aria-hidden="true"></i> {{message}}</div>
+                {% else %}
+                <div class="" style="color:green"><i class="fa fa-check" aria-hidden="true"></i> {{message}}</div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% csrf_token %}
+                <div class="col-md-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingName" name="full_name" placeholder="Your Full Name" required>
+                    <label for="floatingName">Your Full Name</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Your Email" required>
+                    <label for="floatingEmail">Your Email</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingPassword" placeholder="Contact Number" name="contact_number" required>
+                    <label for="floatingPassword">Contact Number</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating">
+                    <textarea class="form-control" name="message" placeholder="Message" id="floatingTextarea" style="height: 100px;"></textarea>
+                    <label for="floatingTextarea">Message</label>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock content %}
+

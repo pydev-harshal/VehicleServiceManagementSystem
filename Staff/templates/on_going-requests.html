@@ -1,0 +1,199 @@
+
+{% extends "staff_base.html" %}
+
+
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>On Going Requests</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>Service No</th>
+                    <th>Reg Number</th>
+                    <th>Vehicle Name</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                    <th>Details</th>
+                    <th>Add Bill</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for obj in services %}
+                  <tr>
+                    <td>{{obj.service_number}}</td>
+                    <td>{{obj.vehicle_reg_no}}</td>
+                    <td>{{obj.vehicle_brand}} {{obj.vehicle_name}} {{obj.vehicle_model}}</td>
+                    <td>{{obj.admin_remark}}</td>
+                    <td>{{obj.total_amount}}<i class="bi bi-currency-dollar"></i></td>
+                    <td>          
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModal{{obj.id}}">
+                <i class="bi bi-eye-fill"></i>
+              </button>
+
+              <div class="modal fade" id="largeModal{{obj.id}}" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Service Request : {{obj.service_number}}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Category</div>
+                        <div class="col-lg-9 col-md-8">{{obj.category}}</div>
+                      </div>
+                      <hr>
+                      <h5><b>Contact Detail</b></h5>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Customer Name</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.full_name}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Email</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.user_id}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Contact Number</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.phone_number}}</div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Registration Number</div>
+                        <div class="col-lg-9 col-md-8">{{obj.vehicle_reg_no}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Vehicle</div>
+                        <div class="col-lg-9 col-md-8">{{obj.vehicle_brand}} {{obj.vehicle_name}} {{obj.vehicle_model}}</div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Service Date and Time</div>
+                        <div class="col-lg-9 col-md-8">{{obj.service_date}} / {{obj.service_time}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Pickup Address</div>
+                        <div class="col-lg-9 col-md-8">{{obj.pickup_address}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Delivery </div>
+                        <div class="col-lg-9 col-md-8">{{obj.need_delivery}}</div>
+                      </div>
+    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                      <form method="post">{% csrf_token %}<input type="hidden" name="id" value="{{obj.id}}"><input type="hidden" name="action" value="status"><button type="submit" class="btn btn-success">Complete</button></form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                    </td>
+                    <td>          
+              <nav>
+              <ol class="breadcrumb">
+                <li class="">              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#large1Modal{{obj.id}}">
+                  <i class="bi bi-cash-coin"></i>
+                </button></li>
+                <span>&nbsp;&nbsp;</span>
+                {% if obj.total_amount > 0 %}
+                <li class=""><form method="post">{% csrf_token %}<input type="hidden" name="id" value="{{obj.id}}"><input type="hidden" name="action" value="status"><button type="submit" class="btn btn-success">Complete</button></form></li>
+                {% endif %}
+                <!-- <li class="breadcrumb-item active">Profile</li> -->
+              </ol>
+            </nav>
+
+              <div class="modal fade" id="large1Modal{{obj.id}}" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Service Request : {{obj.service_number}}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" class="row g-3">
+                          <div class="col-12">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{obj.id}}">
+                            <label for="serviceCharge" class="form-label">Service Charge</label>
+                            <input type="text" class="form-control" id="serviceCharge" name="service_charge" >
+                          </div>
+                          <div class="col-12">
+                            <label for="otherCharge" class="form-label">Other Charge</label>
+                            <input type="text" class="form-control" id="otherCharge" name="other_charge" >
+                          </div>
+                          <div class="col-12">
+                            <label for="partCharge" class="form-label">Parts Charge</label>
+                            <input type="text" class="form-control" id="partCharge" name="parts_charge" >
+                          </div>
+                          <div class="col-12">
+                            <label for="total" class="form-label">Total Amount</label>
+                            <div class="input-group"> 
+                                <input type="text" class="form-control" id="total" name="total_amount" value="{{ obj.total_amount }}">
+                                <span class="input-group-text"><i class='bi bi-currency-dollar'></i></span>
+                            </div>
+                          </div>
+                          <div class="text-center">
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                            <button type="submit" class="btn btn-success">Confirm and Proceed</button>
+                          </div>
+                        </form>
+                      </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock content %}
+{% block java %}
+<script>
+    const numberInputs = document.querySelectorAll('input[type="text"]');
+    const serviceChargeInput = document.getElementById('serviceCharge');
+    const otherChargeInput = document.getElementById('otherCharge');
+    const partChargeInput = document.getElementById('partCharge');
+    const totalInput = document.getElementById('total');
+    
+    numberInputs.forEach(input => {
+      input.addEventListener('input', function(event) {
+        let inputValue = event.target.value;
+        inputValue = inputValue.replace(/[^0-9.]/g, ''); // Allow only numbers and a dot
+        
+        if (inputValue !== event.target.value) {
+          event.target.value = inputValue; // Update the input value
+        }
+  
+
+      });
+    });
+  </script>
+  {% endblock java %}

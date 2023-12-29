@@ -1,0 +1,159 @@
+
+{% extends "staff_base.html" %}
+
+
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Completed Requests</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>Service No</th>
+                    <th>Reg Number</th>
+                    <th>Vehicle Name</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for obj in services %}
+                  <tr>
+                    <td>{{obj.service_number}}</td>
+                    <td>{{obj.vehicle_reg_no}}</td>
+                    <td>{{obj.vehicle_brand}} {{obj.vehicle_name}} {{obj.vehicle_model}}</td>
+                    <td>          
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#largeModal{{obj.id}}">
+                <i class="bi bi-eye-fill"></i>
+              </button>
+
+              <div class="modal fade" id="largeModal{{obj.id}}" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Service Request : {{obj.service_number}}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Category</div>
+                        <div class="col-lg-9 col-md-8">{{obj.category}}</div>
+                      </div>
+                      <hr>
+                      <h5><b>Contact Detail</b></h5>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Customer Name</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.full_name}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Email</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.user_id}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Contact Number</div>
+                        <div class="col-lg-9 col-md-8">{{obj.profile_id.phone_number}}</div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Registration Number</div>
+                        <div class="col-lg-9 col-md-8">{{obj.vehicle_reg_no}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Vehicle</div>
+                        <div class="col-lg-9 col-md-8">{{obj.vehicle_brand}} {{obj.vehicle_name}} {{obj.vehicle_model}}</div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Service Date and Time</div>
+                        <div class="col-lg-9 col-md-8">{{obj.service_date}} / {{obj.service_time}}</div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Pickup Address</div>
+                        <div class="col-lg-9 col-md-8">{{obj.pickup_address}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Delivery </div>
+                        <div class="col-lg-9 col-md-8">{{obj.need_delivery}}</div>
+                      </div>
+                      <hr>
+                      <h5><b>Billing Detail</b></h5>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label ">Service Charge</div>
+                        <div class="col-lg-9 col-md-8">{{obj.service_charge}}<i class="bi bi-currency-dollar"></i></div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Other Charge</div>
+                        <div class="col-lg-9 col-md-8">{{obj.other_charge}}<i class="bi bi-currency-dollar"></i></div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Parts Charge</div>
+                        <div class="col-lg-9 col-md-8">{{obj.parts_charge}}<i class="bi bi-currency-dollar"></i></div>
+                      </div>
+    
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4 label">Total Amount</div>
+                        <div class="col-lg-9 col-md-8">{{obj.total_amount}}<i class="bi bi-currency-dollar"></i></div>
+                      </div>
+                      <hr>
+                      <div class="text-center">
+                        {% if obj.payment_status == False %}
+                        <form method="post">
+                            {% csrf_token %}
+                        <input type="hidden" name="id" value="{{obj.id}}">
+                        <button type="submit" class="btn btn-warning">Confirm Payment</button>
+                    </form>
+                    {% else %}
+                    <button type="button" class="btn btn-success"><i class="ri-check-fill"></i>Payment Done</button>
+                    {% endif %}
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                      {% if obj.payment_status == True %}
+                      <form method="post"><button type="button" class="btn btn-success">Ready For Delivery</button></form>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+                    </td>
+                    {% if obj.payment_status == True %}
+                    <td><form method="post">{% csrf_token %}<input type="hidden" name="id" value="{{obj.id}}"><input type="hidden" name="action" value="status"><button type="submit" class="btn btn-success">Deliver Vehicle </button></form></td>
+                    {% else %}
+                    {% if obj.admin_remark == 'Completed' %}
+                    <td><button type="submit" class="btn btn-warning">Payment Pending</button></form></td>
+                    {% else %}
+                    <td><button type="button" class="btn btn-warning"><i class="ri-alert-line"></i>Work Pending</button></form></td>
+                    {% endif %}
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock content %}
