@@ -26,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# CSRF_TRUSTED_ORIGINS = []
+SECRET_KEY = 'django-insecure--b+&jn^%aozn_j7^&=5w+441!1g0qm-08lq-z-+sj5ybv*!mkf'
 
 # Application definition
 
