@@ -1,0 +1,9 @@
+Staff/__pycache__/
+Staff/migrations/0001_initial.py
+Staff/migrations/0002_initial.py
+Staff/migrations/__pycache__/
+Users/__pycache__/
+Users/migrations/0001_initial.py
+Users/migrations/__pycache__/
+VehicleServiceManagementSystem/__pycache__/
+db.sqlite3

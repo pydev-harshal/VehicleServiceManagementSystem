@@ -23,7 +23,9 @@ USER_STATUS = [
 
 CATEGORY_CHOICES = [
     ('2 Wheeler','2 Wheeler'),
-    ('4 Wheeler','4 Wheeler')
+    ('4 Wheeler','4 Wheeler'),
+    ('Bus','Bus'),
+    ('Truck','Truck')
 ]
 
 ADMIN_REMARK_CHOICES = [
